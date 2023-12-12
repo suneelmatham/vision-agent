@@ -91,7 +91,7 @@ The client is built using NuxtJS in Vue. Follow these steps to set it up:
 - Open the URL in your browser.
 
 ## Contributions are welcome
-See CONTRIBUTING.md
+See [CONTRIBUTING.md](/CONTRIBUTING.md)
 
 Will keep posting updates here https://twitter.com/suneel_matham
 
