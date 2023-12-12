@@ -11,6 +11,10 @@ Aim's to develop AI agents that can guide you through various tasks by sharing y
 
 ## Demo
 
+
+https://github.com/suneelmatham/vision-agent/assets/54971275/3dce66d3-54bc-44b2-9c2b-9b0db659e4c5
+
+
 ## Setup
 
 Project consists of two main components: the backend and the frontend client.
@@ -70,7 +74,7 @@ Background tasks are managed using `screen`.
 - Use `screen -r model_worker` to connect to the background tasks.
 - Use `CTRL + A + D` to exit from screen.
 
-### Frontend Client Setup
+## Frontend Client Setup
 
 The client is built using NuxtJS in Vue. Follow these steps to set it up:
 
