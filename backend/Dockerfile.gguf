@@ -1,0 +1,35 @@
+# FROM python:3.10
+FROM ubuntu
+
+RUN apt autoremove && apt autoclean
+
+RUN apt-get update && \
+    apt-get upgrade -y
+
+
+RUN apt install git python3 python3-venv python3-pip screen make g++ -y
+
+
+RUN git clone https://github.com/ggerganov/llama.cpp /model/llama.cpp
+
+WORKDIR /model/llama.cpp
+RUN make
+
+
+WORKDIR /app
+
+COPY ./requirements.txt /app/requirements.txt
+COPY ./.env /.env
+RUN python3 -m venv venv
+RUN ./venv/bin/pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./app app
+
+COPY ./scripts/gguf_start.sh ./scripts/gguf_start.sh
+RUN chmod +x ./scripts/gguf_start.sh
+
+EXPOSE 8000
+VOLUME /model/downloads/
+
+CMD ["/bin/bash", "-c", "./scripts/gguf_start.sh && source ./venv/bin/activate && ./venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000"]
